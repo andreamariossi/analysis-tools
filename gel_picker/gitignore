@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Conda
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data & outputs (don't commit gel images or results to the repo)
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*_quantification.csv
+*_annotated.png
+*_analysis_figure.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
