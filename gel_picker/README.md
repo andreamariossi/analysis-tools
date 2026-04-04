@@ -19,8 +19,8 @@ Draw rectangles directly on your gel, set per-lane loading controls, inspect are
 ```
 
 ![Gel picker interface](images/interface_band.png)
+![Gel picker interface](images/interface_results.png)
 
-![Gel picker interface](../images/interface_band.png)
 ---
 
 ## Features
