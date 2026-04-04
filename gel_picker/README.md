@@ -17,6 +17,7 @@ Draw rectangles directly on your gel, set per-lane loading controls, inspect are
 │  Mode  │  Lock size  │  BG radius  │  Quantify  │  Save     │
 └────────────────────────────────────────────────────────────┘
 ```
+![../images/interface_band.png]
 
 ---
 
