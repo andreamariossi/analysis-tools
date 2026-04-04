@@ -17,10 +17,10 @@ Draw rectangles directly on your gel, set per-lane loading controls, inspect are
 │  Mode  │  Lock size  │  BG radius  │  Quantify  │  Save     │
 └────────────────────────────────────────────────────────────┘
 ```
-```
-![Gel picker interface](images/interface_band.png)
-```
 
+![Gel picker interface](images/interface_band.png)
+
+![Gel picker interface](../images/interface_band.png)
 ---
 
 ## Features
