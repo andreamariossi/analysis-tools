@@ -75,7 +75,6 @@ Draw rectangles directly on your gel, set per-lane loading controls, inspect are
 ```bash
 # 1. Clone
 git clone https://github.com/andreamariossi/analysis-tools.git
-git clone https://github.com/andreamariossi/analysis-tools/tree/main/gel_picker/gel-picker.git
 cd gel-picker
 
 # 2. Create environment
