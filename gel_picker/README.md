@@ -10,7 +10,7 @@ Draw rectangles directly on your gel, set per-lane loading controls, inspect are
 
 | | `gel_picker_simple.py` | `gel_picker_v5.py` |
 |---|---|---|
-| **Opens in** | Matplotlib window | Browser (http://localhost:5050) |
+| **Opens in** |Browser (http://localhost:5050) | Browser (http://localhost:5050) |
 | **Extra dependency** | None | Flask |
 | **Select bands by** | Clicking left edge → right edge → band row | Drawing rectangles |
 | **Move / resize boxes** | ✗ | ✓ |
@@ -334,7 +334,6 @@ MIT License — see [LICENSE](LICENSE) for details.
 ## Contributing
 
 Bug reports, feature requests, and pull requests are welcome.  
-Please open an issue before starting a large change so we can discuss the approach.
 
 ---
 
