@@ -3,9 +3,77 @@
 Interactive browser-based tool for quantifying Coomassie-stained SDS-PAGE gel images.  
 Draw rectangles directly on your gel, set per-lane loading controls, inspect area curves, and export CSVs.
 
+
 ---
 
-## Screenshot
+## Which version should I use?
+
+| | `gel_picker_simple.py` | `gel_picker_v5.py` |
+|---|---|---|
+| **Opens in** | Matplotlib window | Browser (http://localhost:5050) |
+| **Extra dependency** | None | Flask |
+| **Select bands by** | Clicking left edge → right edge → band row | Drawing rectangles |
+| **Move / resize boxes** | ✗ | ✓ |
+| **Locked box size** | ✗ | ✓ |
+| **Live profile panel** | ✓ | ✓ |
+| **Area curve view** | ✓ (filled) | ✓ (toggle Signal / Area / Both) |
+| **SNR per band** | ✗ | ✓ |
+| **Saturation detection** | ✗ | ✓ |
+| **Results page** | Bar chart inline | Separate tab, bar + line, downloadable |
+| **Session logging** | ✗ | ✓ (analyst, timestamp, notes) |
+| **Best for** | Quick one-off use, no browser | Rigorous / publication work |
+
+**If you're unsure, start with the simple version** — it has fewer steps.  
+**If you want to be more precise ** — it gives you SNR, saturation warnings, session metadata, and a dedicated results page.
+
+---
+
+## Repository layout
+
+```
+gel-picker/
+├── gel_picker_simple.py   ← click-to-select, no browser needed
+├── gel_picker_v5.py       ← full-featured, opens in browser
+├── environment.yml        ← conda install (recommended)
+├── requirements.txt       ← pip install (alternative)
+├── LICENSE
+└── .gitignore
+```
+
+
+---
+
+## Layout & Screenshot - simple
+
+```
+┌──────────────────────────────┬──────────────────────────┐
+│                              │  Lane profiles           │
+│       Gel image              │  (updates as you click)  │
+│   (click to define lanes)    ├──────────────────────────┤
+│                              │  Bar chart               │
+├──────────────────────────────┴──────────────────────────┤
+│ [Radio: Band lane / Norm band]  [Undo] [Clear]          │
+│ [Quantify ▶]  [Save CSV]                                │
+└─────────────────────────────────────────────────────────┘
+```
+### Workflow
+
+1. **Click left edge** of a lane → the tool draws a guide line
+2. **Click right edge** → a blue box appears over that lane
+3. **Click the band row** to quantify — a yellow line marks it
+4. Repeat steps 1–3 for each lane, left to right
+5. Switch radio to **"Norm band"** → click the loading control row  
+   *(applies the same norm row to all lanes)*
+6. Click **Quantify ▶** — profiles and a bar chart appear
+7. Click **Save CSV** — file saved next to your gel image
+
+> **Undo** removes the most recent lane.  
+> **Clear** resets everything for the current gel.  
+> If you loaded multiple gels, use **◀ Prev / Next ▶** to switch.
+
+---
+
+## Layout & Screenshot - complex
 
 ```
 ┌──────────────────────────────────┬──────────────────────────┐
@@ -83,6 +151,8 @@ conda activate gel-picker
 
 # 3. Run
 python gel_picker.py path/to/gel1.tif path/to/gel2.tif
+python gel_picker_simple.py path/to/gel1.tif path/to/gel2.tif
+
 ```
 
 Then open **http://localhost:5050** in your browser.
@@ -99,6 +169,7 @@ pip install -r requirements.txt
 
 # 3. Run
 python gel_picker.py path/to/gel1.tif path/to/gel2.tif
+python gel_picker_simple.py path/to/gel1.tif path/to/gel2.tif
 ```
 
 ### Option C — pip with virtual environment (cleanest)
@@ -215,9 +286,10 @@ The file is saved next to your original gel image with `_quantification.csv` app
 
 ---
 
-## Methods text (for papers)
 
-> Gel images were quantified using Gel Band Picker (v5, [GitHub URL]).  
+
+## Notes on accuracy
+
 > Band regions and per-lane loading controls were defined by manually drawn rectangles.  
 > Background was estimated by 1D rolling-ball morphological opening with a radius of [N] pixels and subtracted from each lane profile.  
 > Band area was computed by trapezoidal integration of the background-subtracted signal within the selected region.  
@@ -225,8 +297,6 @@ The file is saved next to your original gel image with `_quantification.csv` app
 > Bands with > 2% pixel saturation were excluded from quantification.
 
 ---
-
-## Notes on accuracy
 
 **Why per-lane norm boxes?**  
 Even small run-to-run differences in gel migration mean a single horizontal norm box position will not land at the same row in every lane. Drawing individual norm boxes per lane ensures the normalization region always captures the same band in each lane.
